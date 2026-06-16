@@ -1,8 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Mail, Phone, MapPin, Server, Cpu, Database } from "lucide-react";
 
 import ProfileSummary from "@/components/ProfileSummary";
 import GithubPulse from "@/components/GithubPulse";
+import { GithubPulseSkeleton } from "@/components/Skeletons";
 import ProjectsCatalog from "@/components/ProjectsCatalog";
 import InteractiveSimulators from "@/components/InteractiveSimulators";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
@@ -110,7 +111,9 @@ export default function Home() {
           <ProfileSummary />
 
           {/* GitHub Activity Pulse Card */}
-          <GithubPulse />
+          <Suspense fallback={<GithubPulseSkeleton />}>
+            <GithubPulse />
+          </Suspense>
 
           {/* Core Competency Metric Progress Bars */}
           <div className="premium-card rounded-2xl p-5 border border-zinc-200 bg-white space-y-4 shadow-sm">
