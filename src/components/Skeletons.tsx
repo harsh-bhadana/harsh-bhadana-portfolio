@@ -69,22 +69,6 @@ export function SecuritySkeleton() {
   );
 }
 
-export function SystemSkeleton() {
-  return (
-    <div className="premium-card rounded-2xl p-5 border border-zinc-200 bg-white flex flex-col justify-between h-44 animate-pulse">
-      <div className="flex justify-between items-center border-b border-zinc-100 pb-2.5">
-        <div className="h-4 w-4 bg-zinc-100 rounded-full"></div>
-        <div className="h-3 w-20 bg-zinc-100 rounded-md"></div>
-      </div>
-      <div className="space-y-2">
-        <div className="h-3 w-5/6 bg-zinc-100 rounded"></div>
-        <div className="h-3 w-2/3 bg-zinc-100 rounded"></div>
-      </div>
-      <div className="h-7 w-full bg-zinc-100 rounded-lg"></div>
-    </div>
-  );
-}
-
 export function GithubPulseSkeleton() {
   return (
     <div className="premium-card rounded-2xl p-5 border border-zinc-200 bg-white space-y-4 shadow-sm animate-pulse">
