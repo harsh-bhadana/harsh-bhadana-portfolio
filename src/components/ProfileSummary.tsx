@@ -1,0 +1,81 @@
+"use client";
+
+import React from "react";
+import { CheckCircle2, ShieldCheck, Zap, Award } from "lucide-react";
+
+export default function ProfileSummary() {
+  const highlights = [
+    { icon: <Award className="text-primary" size={16} />, title: "4+ Years", desc: "Professional experience" },
+    { icon: <ShieldCheck className="text-secondary" size={16} />, title: "Data Security", desc: "CSP & Hash Validation" },
+    { icon: <Zap className="text-amber-600" size={16} />, title: "High Performance", desc: "API & UI Optimization" },
+  ];
+
+  const skillCategories = [
+    {
+      title: "Core Frameworks",
+      skills: ["Next.js (App Router)", "React.js", "Redux Toolkit"],
+    },
+    {
+      title: "Data & Hosting",
+      skills: ["Firebase Realtime DB", "Firebase Hosting", "Vercel", "REST APIs"],
+    },
+    {
+      title: "Security & Standards",
+      skills: ["Content Security Policy", "SHA-256 Payload Hash", "XSS Mitigation"],
+    },
+  ];
+
+  return (
+    <div className="premium-card rounded-2xl p-6 border border-zinc-200 bg-white space-y-6">
+      {/* Intro */}
+      <div className="space-y-3">
+        <h3 className="text-sm font-mono uppercase text-zinc-400 tracking-wider">
+          Professional Profile
+        </h3>
+        <p className="text-sm text-zinc-600 leading-relaxed font-sans">
+          Frontend Engineer specializing in designing and building high-performance dashboards and secure web applications. Experienced in developing real-time bidding systems, optimizing API round-trips, and hardening web applications against common vulnerability vectors like XSS.
+        </p>
+      </div>
+
+      {/* Highlights Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        {highlights.map((item, idx) => (
+          <div key={idx} className="flex items-center space-x-3 p-3 bg-zinc-50 rounded-xl border border-zinc-100">
+            <div className="p-2 bg-white rounded-lg border border-zinc-200 shrink-0">
+              {item.icon}
+            </div>
+            <div>
+              <p className="text-xs font-bold text-zinc-800">{item.title}</p>
+              <p className="text-[10px] text-zinc-500">{item.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Skills Grid */}
+      <div className="space-y-4">
+        <h3 className="text-sm font-mono uppercase text-zinc-400 tracking-wider">
+          Skills Inventory
+        </h3>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {skillCategories.map((cat, idx) => (
+            <div key={idx} className="space-y-2">
+              <span className="text-xs font-bold text-zinc-800 block">{cat.title}</span>
+              <div className="flex flex-wrap gap-1">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className="text-[10px] font-mono bg-zinc-100/60 hover:bg-zinc-100 text-zinc-600 hover:text-zinc-950 px-2 py-1 rounded-md border border-zinc-200/50 transition-colors"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}

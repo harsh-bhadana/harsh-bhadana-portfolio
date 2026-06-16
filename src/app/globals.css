@@ -1,0 +1,85 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fbfbfd;
+  --foreground: #18181b;
+  --primary: #4f46e5; /* Premium Indigo */
+  --secondary: #0d9488; /* Elegant Teal */
+  --accent: #d97706; /* Compliance Amber */
+  --card-bg: #ffffff;
+  --border-color: #e4e4e7;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-card-bg: var(--card-bg);
+  --color-border-color: var(--border-color);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Base style resets */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+  overflow-x: hidden;
+}
+
+/* Elegant card design */
+.premium-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+  border-color: #d4d4d8;
+}
+
+/* Glowing border cues (subtle light-mode version) */
+.glow-primary {
+  border-color: rgba(79, 70, 229, 0.3);
+  box-shadow: 0 0 12px rgba(79, 70, 229, 0.04);
+}
+
+.glow-secondary {
+  border-color: rgba(13, 148, 136, 0.3);
+  box-shadow: 0 0 12px rgba(13, 148, 136, 0.04);
+}
+
+.glow-accent {
+  border-color: rgba(217, 119, 6, 0.3);
+  box-shadow: 0 0 12px rgba(217, 119, 6, 0.04);
+}
+
+/* Minimalist scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f4f5;
+}
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a1a1aa;
+}
+
+/* Soft grid pattern */
+.bg-grid-pattern {
+  background-size: 30px 30px;
+  background-image: 
+    linear-gradient(to right, rgba(24, 24, 27, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 24, 27, 0.015) 1px, transparent 1px);
+}
