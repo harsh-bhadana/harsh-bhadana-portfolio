@@ -12,16 +12,20 @@ export default function ProfileSummary() {
 
   const skillCategories = [
     {
-      title: "Core Frameworks",
-      skills: ["Next.js (App Router)", "React.js", "Redux Toolkit"],
+      title: "Frameworks & State",
+      skills: ["Next.js (App Router, Server Actions)", "React.js", "Redux Toolkit", "Context API"],
     },
     {
-      title: "Data & Hosting",
-      skills: ["Firebase Realtime DB", "Firebase Hosting", "Vercel", "REST APIs"],
+      title: "Languages & Styling",
+      skills: ["TypeScript", "JavaScript (ES6+)", "Tailwind CSS", "Responsive Design", "Accessibility (WCAG)"],
     },
     {
-      title: "Security & Standards",
-      skills: ["Content Security Policy", "SHA-256 Payload Hash", "XSS Mitigation"],
+      title: "Security & Cloud",
+      skills: ["Firebase (Auth, Realtime DB, Cloud Functions)", "REST APIs", "CSP Headers", "Hash Validation"],
+    },
+    {
+      title: "Performance & Tools",
+      skills: ["Core Web Vitals", "Code Splitting", "Lazy Loading", "Git/GitHub", "Vercel", "Google Analytics"],
     },
   ];
 
@@ -33,7 +37,7 @@ export default function ProfileSummary() {
           Professional Profile
         </h3>
         <p className="text-sm text-zinc-600 leading-relaxed font-sans">
-          Frontend Engineer specializing in designing and building high-performance dashboards and secure web applications. Experienced in developing real-time bidding systems, optimizing API round-trips, and hardening web applications against common vulnerability vectors like XSS.
+          Frontend Developer specializing in building high-performance dashboards, responsive web architectures, and secure client-side applications. Committed to clean code, modular design, and robust code standardization to deliver maintainable, highly accessible, and pixel-perfect digital experiences.
         </p>
       </div>
 
@@ -58,7 +62,7 @@ export default function ProfileSummary() {
           Skills Inventory
         </h3>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4">
           {skillCategories.map((cat, idx) => (
             <div key={idx} className="space-y-2">
               <span className="text-xs font-bold text-zinc-800 block">{cat.title}</span>

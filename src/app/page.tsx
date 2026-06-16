@@ -23,6 +23,24 @@ const GithubIcon = ({ size = 16, className = "" }: { size?: number; className?: 
   </svg>
 );
 
+const LinkedinIcon = ({ size = 16, className = "" }: { size?: number; className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+    width={size}
+    height={size}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect width="4" height="12" x="2" y="9" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 export default function Home() {
   return (
     <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-8 md:py-12 flex flex-col space-y-6 md:space-y-8">
@@ -41,7 +59,7 @@ export default function Home() {
             Harsh Bhadana
           </h1>
           <p className="text-xs md:text-sm font-mono font-bold text-indigo-600 uppercase tracking-wider">
-            Senior Frontend Engineer & Dashboard Architect
+            Senior Frontend Developer
           </p>
         </div>
 
@@ -70,6 +88,15 @@ export default function Home() {
           >
             <GithubIcon size={13} className="text-indigo-600" />
             <span>github/harsh-bhadana</span>
+          </a>
+          <a
+            href="https://linkedin.com/in/harsh-bhadana"
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center space-x-2.5 bg-white hover:bg-zinc-50 border border-zinc-200 px-3 py-2 rounded-xl text-zinc-650 hover:text-zinc-900 transition-colors"
+          >
+            <LinkedinIcon size={13} className="text-indigo-600" />
+            <span>linkedin/harsh-bhadana</span>
           </a>
         </div>
       </header>
