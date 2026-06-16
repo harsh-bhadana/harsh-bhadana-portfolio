@@ -194,7 +194,7 @@ export default function GithubPulse() {
       );
       if (statsResponse.ok) {
         const data = await statsResponse.json();
-        if (data.total && data.total.lastYear !== undefined) {
+        if (data.contributions) {
           // Process weeks data
           const contributionCalendar = data.contributions || [];
           // Get the last 26 weeks of contribution days
