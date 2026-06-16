@@ -18,7 +18,12 @@ export default function InteractiveSimulators() {
   const tabs = [
     { id: "bidding", name: "Bike Auction", icon: <Gavel size={14} />, color: "text-indigo-600" },
     { id: "tracker", name: "Somani Tracker", icon: <Ship size={14} />, color: "text-teal-600" },
-    { id: "security", name: "CSP Sandbox", icon: <ShieldAlert size={14} />, color: "text-amber-600" },
+    {
+      id: "security",
+      name: "CSP Sandbox",
+      icon: <ShieldAlert size={14} />,
+      color: "text-amber-600",
+    },
   ];
 
   if (!isVisible) {
@@ -33,10 +38,15 @@ export default function InteractiveSimulators() {
           </div>
           <div>
             <h3 className="text-sm font-bold text-zinc-850">Interactive Telemetry Showcases</h3>
-            <p className="text-[10px] font-mono text-zinc-400 uppercase mt-0.5">Click to deploy live sandbox environments</p>
+            <p className="text-[10px] font-mono text-zinc-400 uppercase mt-0.5">
+              Click to deploy live sandbox environments
+            </p>
           </div>
         </div>
-        <ChevronDown size={18} className="text-zinc-400 group-hover:text-zinc-600 transition-colors" />
+        <ChevronDown
+          size={18}
+          className="text-zinc-400 group-hover:text-zinc-600 transition-colors"
+        />
       </button>
     );
   }
@@ -69,9 +79,7 @@ export default function InteractiveSimulators() {
               key={tab.id}
               onClick={() => setActiveTab(tab.id as SimTab)}
               className={`flex-1 min-w-[120px] relative py-2 px-3 rounded-lg text-xs font-mono font-bold flex items-center justify-center space-x-2 transition-all duration-300 ${
-                isActive
-                  ? "text-zinc-900 shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-700"
+                isActive ? "text-zinc-900 shadow-sm" : "text-zinc-500 hover:text-zinc-700"
               }`}
             >
               {isActive && (
@@ -81,9 +89,7 @@ export default function InteractiveSimulators() {
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
-              <span className={`relative z-10 ${isActive ? tab.color : ""}`}>
-                {tab.icon}
-              </span>
+              <span className={`relative z-10 ${isActive ? tab.color : ""}`}>{tab.icon}</span>
               <span className="relative z-10">{tab.name}</span>
             </button>
           );

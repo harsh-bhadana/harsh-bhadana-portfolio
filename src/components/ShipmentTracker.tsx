@@ -18,36 +18,85 @@ export default function ShipmentTracker() {
   const [statusFilter, setStatusFilter] = useState("All");
 
   const [shipments] = useState<Shipment[]>([
-    { id: "SMN-98402", origin: "Mumbai (Port)", destination: "Faridabad ICD", status: "In Transit", progress: 65, eta: "16 Hours", carrier: "Somani Logistics" },
-    { id: "SMN-71109", origin: "Chennai Port", destination: "Delhi Central", status: "Delivered", progress: 100, eta: "Completed", carrier: "Somani Express" },
-    { id: "SMN-55418", origin: "Gujarat Port", destination: "Faridabad ICD", status: "Delayed", progress: 40, eta: "2 Days (Delayed)", carrier: "Somani Cargo" },
-    { id: "SMN-33012", origin: "Kolkata Hub", destination: "Mumbai Port", status: "Pending", progress: 10, eta: "3 Days", carrier: "Somani Logistics" },
-    { id: "SMN-88492", origin: "Delhi Central", destination: "Bangalore Hub", status: "In Transit", progress: 85, eta: "4 Hours", carrier: "Somani Express" },
+    {
+      id: "SMN-98402",
+      origin: "Mumbai (Port)",
+      destination: "Faridabad ICD",
+      status: "In Transit",
+      progress: 65,
+      eta: "16 Hours",
+      carrier: "Somani Logistics",
+    },
+    {
+      id: "SMN-71109",
+      origin: "Chennai Port",
+      destination: "Delhi Central",
+      status: "Delivered",
+      progress: 100,
+      eta: "Completed",
+      carrier: "Somani Express",
+    },
+    {
+      id: "SMN-55418",
+      origin: "Gujarat Port",
+      destination: "Faridabad ICD",
+      status: "Delayed",
+      progress: 40,
+      eta: "2 Days (Delayed)",
+      carrier: "Somani Cargo",
+    },
+    {
+      id: "SMN-33012",
+      origin: "Kolkata Hub",
+      destination: "Mumbai Port",
+      status: "Pending",
+      progress: 10,
+      eta: "3 Days",
+      carrier: "Somani Logistics",
+    },
+    {
+      id: "SMN-88492",
+      origin: "Delhi Central",
+      destination: "Bangalore Hub",
+      status: "In Transit",
+      progress: 85,
+      eta: "4 Hours",
+      carrier: "Somani Express",
+    },
   ]);
 
   const filteredShipments = shipments.filter((s) => {
-    const matchesSearch = s.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          s.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                          s.destination.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch =
+      s.id.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.origin.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      s.destination.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesFilter = statusFilter === "All" || s.status === statusFilter;
     return matchesSearch && matchesFilter;
   });
 
   const getStatusStyle = (status: string) => {
     switch (status) {
-      case "In Transit": return "text-teal-600 bg-teal-50 border-teal-100";
-      case "Delivered": return "text-emerald-600 bg-emerald-50 border-emerald-100";
-      case "Delayed": return "text-rose-600 bg-rose-50 border-rose-100";
-      default: return "text-zinc-500 bg-zinc-50 border-zinc-100";
+      case "In Transit":
+        return "text-teal-600 bg-teal-50 border-teal-100";
+      case "Delivered":
+        return "text-emerald-600 bg-emerald-50 border-emerald-100";
+      case "Delayed":
+        return "text-rose-600 bg-rose-50 border-rose-100";
+      default:
+        return "text-zinc-500 bg-zinc-50 border-zinc-100";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "In Transit": return <Compass size={12} className="animate-spin-slow" />;
-      case "Delivered": return <CheckCircle2 size={12} />;
-      case "Delayed": return <AlertCircle size={12} />;
-      default: return <Clock size={12} />;
+      case "In Transit":
+        return <Compass size={12} className="animate-spin-slow" />;
+      case "Delivered":
+        return <CheckCircle2 size={12} />;
+      case "Delayed":
+        return <AlertCircle size={12} />;
+      default:
+        return <Clock size={12} />;
     }
   };
 
@@ -170,7 +219,9 @@ export default function ShipmentTracker() {
                       <span className="text-xs font-mono font-bold text-zinc-900">
                         {shipment.id}
                       </span>
-                      <span className={`px-2 py-0.5 rounded-md border text-[9px] font-mono font-semibold flex items-center space-x-1 ${getStatusStyle(shipment.status)}`}>
+                      <span
+                        className={`px-2 py-0.5 rounded-md border text-[9px] font-mono font-semibold flex items-center space-x-1 ${getStatusStyle(shipment.status)}`}
+                      >
                         {getStatusIcon(shipment.status)}
                         <span className="ml-1">{shipment.status}</span>
                       </span>
@@ -179,10 +230,15 @@ export default function ShipmentTracker() {
                     <div className="grid grid-cols-2 gap-2 text-[10px] font-mono text-zinc-500">
                       <div>
                         <span className="text-zinc-400 block text-[9px] uppercase">Route</span>
-                        <span className="text-zinc-800 font-semibold">{shipment.origin}</span> → <span className="text-zinc-800 font-semibold">{shipment.destination}</span>
+                        <span className="text-zinc-800 font-semibold">
+                          {shipment.origin}
+                        </span> →{" "}
+                        <span className="text-zinc-800 font-semibold">{shipment.destination}</span>
                       </div>
                       <div className="text-right">
-                        <span className="text-zinc-400 block text-[9px] uppercase">Est. Arrival</span>
+                        <span className="text-zinc-400 block text-[9px] uppercase">
+                          Est. Arrival
+                        </span>
                         <span className="text-zinc-800 font-semibold">{shipment.eta}</span>
                       </div>
                     </div>
@@ -192,9 +248,11 @@ export default function ShipmentTracker() {
                       <div className="h-1 bg-zinc-100 rounded-full overflow-hidden">
                         <div
                           className={`h-full rounded-full transition-all duration-500 ${
-                            shipment.status === "Delivered" ? "bg-emerald-500" :
-                            shipment.status === "Delayed" ? "bg-rose-500" :
-                            "bg-indigo-500"
+                            shipment.status === "Delivered"
+                              ? "bg-emerald-500"
+                              : shipment.status === "Delayed"
+                                ? "bg-rose-500"
+                                : "bg-indigo-500"
                           }`}
                           style={{ width: `${shipment.progress}%` }}
                         />

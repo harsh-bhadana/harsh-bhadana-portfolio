@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Beaker, Terminal, Layers, Cpu, Code2, ChevronDown, ChevronUp } from "lucide-react";
+import { ExternalLink, Beaker, Camera, ChevronDown, ChevronUp } from "lucide-react";
 
 interface Specimen {
   name: string;
@@ -19,6 +19,9 @@ interface Project {
   githubUrl: string;
   techStack: string[];
   features: Specimen[];
+  iconType: "beaker" | "camera";
+  launchLabel: string;
+  featuresLabel: string;
 }
 
 const GithubIcon = ({ size = 16, className = "" }: { size?: number; className?: string }) => (
@@ -38,6 +41,13 @@ const GithubIcon = ({ size = 16, className = "" }: { size?: number; className?: 
   </svg>
 );
 
+const statusColors: Record<Project["status"], string> = {
+  "Live Specimen Lab": "bg-emerald-50 border-emerald-100 text-emerald-600",
+  Production: "bg-indigo-50 border-indigo-100 text-indigo-600",
+  Beta: "bg-amber-50 border-amber-100 text-amber-600",
+  Experimental: "bg-rose-50 border-rose-100 text-rose-600",
+};
+
 export default function ProjectsCatalog() {
   const [expandedProjectId, setExpandedProjectId] = useState<string | null>("next-labs");
 
@@ -45,38 +55,100 @@ export default function ProjectsCatalog() {
     {
       id: "next-labs",
       title: "NextJS Labs",
-      description: "A high-performance laboratory for experimental Next.js 15/16 and React 19 specimens. This project isolates advanced architectural patterns, concurrent rendering APIs, and server-side optimization techniques.",
+      description:
+        "A high-performance laboratory for experimental Next.js 15/16 and React 19 specimens. This project isolates advanced architectural patterns, concurrent rendering APIs, and server-side optimization techniques.",
       status: "Live Specimen Lab",
       deployUrl: "https://next-labs-one.vercel.app/",
       githubUrl: "https://github.com/harsh-bhadana/next-labs",
-      techStack: ["Next.js 16", "React 19", "React Compiler", "Tailwind CSS", "Framer Motion", "Edge Runtime"],
+      techStack: [
+        "Next.js 16",
+        "React 19",
+        "React Compiler",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Edge Runtime",
+      ],
       features: [
         {
           name: "Optimistic Kanban Board",
-          description: "Zero-latency drag-and-drop task reordering using React 19's useOptimistic hook with instant rollback triggers on server-side transaction failures.",
+          description:
+            "Zero-latency drag-and-drop task reordering using React 19's useOptimistic hook with instant rollback triggers on server-side transaction failures.",
           badge: "useOptimistic",
         },
         {
           name: "Concurrent Priority Scheduler",
-          description: "Visualizes CPU main thread scheduling. Defers low-priority rendering via useTransition to keep animations locked at 60fps under heavy filters.",
+          description:
+            "Visualizes CPU main thread scheduling. Defers low-priority rendering via useTransition to keep animations locked at 60fps under heavy filters.",
           badge: "useTransition",
         },
         {
           name: "Streaming checkout Wizard",
-          description: "A 4-step progressive wizard eliminating local useState completely by orchestrating useFormStatus and useActionState server hooks.",
+          description:
+            "A 4-step progressive wizard eliminating local useState completely by orchestrating useFormStatus and useActionState server hooks.",
           badge: "useActionState",
         },
         {
           name: "Hybrid Rendering (PPR) Dashboard",
-          description: "Combines instant static page loading with dynamic streamed React Server Component (RSC) chunks as data promises resolve.",
+          description:
+            "Combines instant static page loading with dynamic streamed React Server Component (RSC) chunks as data promises resolve.",
           badge: "PPR / Streaming",
         },
         {
           name: "Granular Directive Caching",
-          description: "Explores Next.js's experimental \"use cache\" directive to apply granular component-level and fetch-level cache duration profiles.",
+          description:
+            'Explores Next.js\'s experimental "use cache" directive to apply granular component-level and fetch-level cache duration profiles.',
           badge: "use cache",
         },
       ],
+      iconType: "beaker",
+      launchLabel: "Launch Lab",
+      featuresLabel: "Experimental Specimens (Live in Lab)",
+    },
+    {
+      id: "clicks",
+      title: "Clicks — Photography Showcase",
+      description:
+        "A minimal, immersive, and premium photography gallery designed to showcase personal photography through a horizontal interactive grid slider. Built with a 'content-first' philosophy, high-performance animations, fluid slide transitions, and a sophisticated dark aesthetic.",
+      status: "Production",
+      deployUrl: "https://clicks-nine.vercel.app/",
+      githubUrl: "https://github.com/harsh-bhadana/clicks",
+      techStack: [
+        "Next.js 16",
+        "React 19",
+        "Tailwind CSS v4",
+        "Framer Motion v12",
+        "Vercel Blob",
+        "Exifr",
+      ],
+      features: [
+        {
+          name: "Toroidal Slide Grid",
+          description:
+            "A widescreen 4x3 grid that shifts rows, columns, or diagonals every 4 seconds in a seamless toroidal loop.",
+          badge: "Toroidal Loop",
+        },
+        {
+          name: "Diagonal Morphing",
+          description:
+            "Diagonal movements temporarily morph grid cells into circles and scale them down to 0.707 of their size to slide collision-free.",
+          badge: "Diagonal Shift",
+        },
+        {
+          name: "Pulsating Ambient Glows",
+          description:
+            "Colorful background glows (Purple/Blue, Emerald/Teal, Rose/Amber) that expand and brighten during active shifts and fade out completely when idle.",
+          badge: "Framer Motion",
+        },
+        {
+          name: "Immersive Full-Screen Lightbox",
+          description:
+            "A minimal photo overlay stripped of metadata clutter, featuring full-screen imagery, keyboard/navigation controls, and custom interactive cursor support.",
+          badge: "Lightbox / UX",
+        },
+      ],
+      iconType: "camera",
+      launchLabel: "Launch Gallery",
+      featuresLabel: "Key Showcase Features",
     },
   ];
 
@@ -90,9 +162,7 @@ export default function ProjectsCatalog() {
         <h2 className="text-xs font-mono uppercase text-zinc-400 tracking-wider">
           Featured Engineering Projects
         </h2>
-        <span className="text-[10px] font-mono text-zinc-350">
-          Scale: Extensible Framework
-        </span>
+        <span className="text-[10px] font-mono text-zinc-350">Scale: Extensible Framework</span>
       </div>
 
       <div className="space-y-4">
@@ -113,19 +183,31 @@ export default function ProjectsCatalog() {
               >
                 <div className="space-y-2 flex-1">
                   <div className="flex items-center space-x-2.5">
-                    <div className="p-2 bg-emerald-50 text-emerald-600 rounded-xl border border-emerald-100 shrink-0">
-                      <Beaker size={18} className="animate-pulse" />
+                    <div
+                      className={`p-2 rounded-xl border shrink-0 ${
+                        project.iconType === "camera"
+                          ? "bg-indigo-50 text-indigo-650 border-indigo-100"
+                          : "bg-emerald-50 text-emerald-600 border-emerald-100"
+                      }`}
+                    >
+                      {project.iconType === "camera" ? (
+                        <Camera size={18} className="animate-pulse" />
+                      ) : (
+                        <Beaker size={18} className="animate-pulse" />
+                      )}
                     </div>
                     <div>
                       <div className="flex items-center space-x-2">
                         <h3 className="text-base font-bold text-zinc-900 tracking-tight">
                           {project.title}
                         </h3>
-                        <span className="text-[9px] font-mono font-bold bg-emerald-50 border border-emerald-100 text-emerald-600 px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        <span
+                          className={`text-[9px] font-mono font-bold px-2 py-0.5 rounded-full uppercase tracking-wider border ${statusColors[project.status]}`}
+                        >
                           {project.status}
                         </span>
                       </div>
-                      <p className="text-xs font-mono text-zinc-450 mt-0.5">
+                      <p className="text-xs font-mono text-zinc-455 mt-0.5">
                         {project.deployUrl.replace("https://", "")}
                       </p>
                     </div>
@@ -141,14 +223,14 @@ export default function ProjectsCatalog() {
                       rel="noreferrer"
                       className="flex items-center space-x-1.5 bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-mono font-bold px-3 py-1.5 rounded-xl transition-all shadow-sm shadow-indigo-100 hover:shadow-md"
                     >
-                      <span>Launch Lab</span>
+                      <span>{project.launchLabel}</span>
                       <ExternalLink size={10} />
                     </a>
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex items-center space-x-1.5 bg-white hover:bg-zinc-50 border border-zinc-200 text-zinc-650 hover:text-zinc-900 text-[10px] font-mono px-3 py-1.5 rounded-xl transition-all"
+                      className="flex items-center space-x-1.5 bg-white hover:bg-zinc-50 border border-zinc-200 text-zinc-655 hover:text-zinc-900 text-[10px] font-mono px-3 py-1.5 rounded-xl transition-all"
                     >
                       <GithubIcon size={10} />
                       <span>Source</span>
@@ -173,16 +255,16 @@ export default function ProjectsCatalog() {
                   >
                     <div className="p-5 space-y-4">
                       {/* Description */}
-                      <p className="text-xs text-zinc-650 leading-relaxed max-w-3xl font-sans">
+                      <p className="text-xs text-zinc-655 leading-relaxed max-w-3xl font-sans">
                         {project.description}
                       </p>
 
                       {/* Specs/Features Grid */}
                       <div className="space-y-2.5">
                         <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block">
-                          Experimental Specimens (Live in Lab)
+                          {project.featuresLabel}
                         </span>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {project.features.map((feat, idx) => (
                             <div

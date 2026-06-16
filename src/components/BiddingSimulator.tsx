@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Lock, Eye, AlertCircle } from "lucide-react";
+import { Shield, Lock } from "lucide-react";
 
 interface BidLog {
   id: string;
@@ -57,20 +57,55 @@ export default function BiddingSimulator() {
   const [customBid, setCustomBid] = useState("");
   const [bidLogs, setBidLogs] = useState<Record<string, BidLog[]>>({
     himalayan: [
-      { id: "1", bidder: "RacerX", amount: 285000, timestamp: "11:30 AM", hash: "8f7e6a5d9c2b4a1f..." },
-      { id: "2", bidder: "BulletLover", amount: 290000, timestamp: "11:31 AM", hash: "9a2b3c4d8e7f6a5b..." },
-      { id: "DelhiRider", bidder: "DelhiRider", amount: 295000, timestamp: "11:35 AM", hash: "1f2e3d4c5b6a7e8f..." },
+      {
+        id: "1",
+        bidder: "RacerX",
+        amount: 285000,
+        timestamp: "11:30 AM",
+        hash: "8f7e6a5d9c2b4a1f...",
+      },
+      {
+        id: "2",
+        bidder: "BulletLover",
+        amount: 290000,
+        timestamp: "11:31 AM",
+        hash: "9a2b3c4d8e7f6a5b...",
+      },
+      {
+        id: "DelhiRider",
+        bidder: "DelhiRider",
+        amount: 295000,
+        timestamp: "11:35 AM",
+        hash: "1f2e3d4c5b6a7e8f...",
+      },
     ],
     continental: [
-      { id: "1", bidder: "CafeRacer", amount: 340000, timestamp: "11:25 AM", hash: "7c6b5a4d3e2f1a0b..." },
-      { id: "2", bidder: "SpeedyBoy", amount: 345000, timestamp: "11:28 AM", hash: "6d5c4b3a2e1f0a9b..." },
-      { id: "GT650Fans", bidder: "GT650Fans", amount: 355000, timestamp: "11:32 AM", hash: "5e4d3c2b1a0f9e8d..." },
+      {
+        id: "1",
+        bidder: "CafeRacer",
+        amount: 340000,
+        timestamp: "11:25 AM",
+        hash: "7c6b5a4d3e2f1a0b...",
+      },
+      {
+        id: "2",
+        bidder: "SpeedyBoy",
+        amount: 345000,
+        timestamp: "11:28 AM",
+        hash: "6d5c4b3a2e1f0a9b...",
+      },
+      {
+        id: "GT650Fans",
+        bidder: "GT650Fans",
+        amount: 355000,
+        timestamp: "11:32 AM",
+        hash: "5e4d3c2b1a0f9e8d...",
+      },
     ],
   });
 
   const [isValidating, setIsValidating] = useState(false);
   const [validationStage, setValidationStage] = useState("");
-  const [lastPayload, setLastPayload] = useState<any>(null);
   const [lastHash, setLastHash] = useState("");
 
   const bidInputRef = useRef<HTMLInputElement>(null);
@@ -82,9 +117,13 @@ export default function BiddingSimulator() {
       const bidders = ["RohanS", "BulletGuru", "RE_Warrior", "MumbaiRider"];
       const nextBid = targetBike.currentBid + Math.floor(Math.random() * 2 + 1) * 5000;
       const randomBidder = bidders[Math.floor(Math.random() * bidders.length)];
-      const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+      const timeStr = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
-      const payloadStr = JSON.stringify({ bidder: randomBidder, amount: nextBid, timestamp: timeStr });
+      const payloadStr = JSON.stringify({
+        bidder: randomBidder,
+        amount: nextBid,
+        timestamp: timeStr,
+      });
       const fullHash = await generateHash(payloadStr);
 
       const newLog: BidLog = {
@@ -120,8 +159,8 @@ export default function BiddingSimulator() {
 
     setIsValidating(true);
     setValidationStage("Validating payload signature...");
-    
-    const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    const timeStr = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     const payloadObj = {
       bidder: "Anonymous Recruiter",
       amount: amount,
@@ -130,7 +169,6 @@ export default function BiddingSimulator() {
     };
 
     const payloadString = JSON.stringify(payloadObj);
-    setLastPayload(payloadObj);
 
     setTimeout(async () => {
       setValidationStage("Verifying cryptographic hash (SHA-256)...");
@@ -193,7 +231,8 @@ export default function BiddingSimulator() {
                   key={bike.id}
                   onClick={() => {
                     const currentLogs = bidLogs[bike.id];
-                    const topBid = currentLogs.length > 0 ? currentLogs[0].amount : bike.startingPrice;
+                    const topBid =
+                      currentLogs.length > 0 ? currentLogs[0].amount : bike.startingPrice;
                     setSelectedBike({
                       ...bike,
                       currentBid: topBid,
@@ -214,7 +253,9 @@ export default function BiddingSimulator() {
             {/* Spec Sheet */}
             <div className="p-4 bg-zinc-50 rounded-xl border border-zinc-100 space-y-3">
               <div>
-                <span className="text-[10px] font-mono text-zinc-400 uppercase">Selected Specification</span>
+                <span className="text-[10px] font-mono text-zinc-400 uppercase">
+                  Selected Specification
+                </span>
                 <h4 className="text-xs font-semibold text-zinc-800 mt-0.5">{selectedBike.specs}</h4>
               </div>
               <div className="flex justify-between items-end">
@@ -225,7 +266,9 @@ export default function BiddingSimulator() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] font-mono text-zinc-400 uppercase">Total Offers</span>
+                  <span className="text-[10px] font-mono text-zinc-400 uppercase">
+                    Total Offers
+                  </span>
                   <div className="text-sm font-bold text-zinc-700">{selectedBike.bidsCount}</div>
                 </div>
               </div>
@@ -253,7 +296,9 @@ export default function BiddingSimulator() {
               {/* Custom Bid */}
               <div className="flex space-x-2">
                 <div className="relative flex-1">
-                  <span className="absolute left-3.5 top-2.5 text-xs text-zinc-400 font-mono">₹</span>
+                  <span className="absolute left-3.5 top-2.5 text-xs text-zinc-400 font-mono">
+                    ₹
+                  </span>
                   <input
                     ref={bidInputRef}
                     type="number"
@@ -282,16 +327,21 @@ export default function BiddingSimulator() {
           {/* Cryptography Footer (SSL styled) */}
           <div className="bg-zinc-50 p-3 rounded-xl border border-zinc-150 flex items-center justify-between text-xs">
             <div className="flex items-center space-x-2">
-              <Shield size={14} className={isValidating ? "text-indigo-600 animate-pulse" : "text-emerald-600"} />
+              <Shield
+                size={14}
+                className={isValidating ? "text-indigo-600 animate-pulse" : "text-emerald-600"}
+              />
               <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-wider">
                 {isValidating ? validationStage : "Payload integrity verified via SHA-256"}
               </span>
             </div>
-            
+
             {lastHash && !isValidating && (
               <div className="flex items-center space-x-1 font-mono text-[9px] text-zinc-400">
                 <Lock size={10} />
-                <span className="truncate max-w-[80px]" title={lastHash}>{lastHash}</span>
+                <span className="truncate max-w-[80px]" title={lastHash}>
+                  {lastHash}
+                </span>
               </div>
             )}
           </div>
@@ -315,7 +365,9 @@ export default function BiddingSimulator() {
                   className="bg-white p-3 rounded-xl border border-zinc-100 flex flex-col space-y-1.5 hover:shadow-sm transition-shadow"
                 >
                   <div className="flex justify-between items-center text-xs">
-                    <span className={`font-semibold ${log.bidder.startsWith("You") ? "text-indigo-600" : "text-zinc-800"}`}>
+                    <span
+                      className={`font-semibold ${log.bidder.startsWith("You") ? "text-indigo-600" : "text-zinc-800"}`}
+                    >
                       {log.bidder}
                     </span>
                     <span className="font-bold text-zinc-900">
