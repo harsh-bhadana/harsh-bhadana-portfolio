@@ -5,7 +5,7 @@ import { Server, Activity, ShieldCheck } from "lucide-react";
 export default async function SystemMonitor() {
   const headersList = await headers();
   const userAgent = headersList.get("user-agent") || "Antigravity Agent";
-  
+
   let browserOS = "Developer Environment";
   if (userAgent.includes("Windows")) browserOS = "Windows OS";
   else if (userAgent.includes("Macintosh")) browserOS = "macOS";

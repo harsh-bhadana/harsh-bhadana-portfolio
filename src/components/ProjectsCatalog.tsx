@@ -2,7 +2,12 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Beaker, Terminal, Layers, Cpu, Code2, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  ExternalLink,
+  Beaker,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 
 interface Specimen {
   name: string;
@@ -45,35 +50,48 @@ export default function ProjectsCatalog() {
     {
       id: "next-labs",
       title: "NextJS Labs",
-      description: "A high-performance laboratory for experimental Next.js 15/16 and React 19 specimens. This project isolates advanced architectural patterns, concurrent rendering APIs, and server-side optimization techniques.",
+      description:
+        "A high-performance laboratory for experimental Next.js 15/16 and React 19 specimens. This project isolates advanced architectural patterns, concurrent rendering APIs, and server-side optimization techniques.",
       status: "Live Specimen Lab",
       deployUrl: "https://next-labs-one.vercel.app/",
       githubUrl: "https://github.com/harsh-bhadana/next-labs",
-      techStack: ["Next.js 16", "React 19", "React Compiler", "Tailwind CSS", "Framer Motion", "Edge Runtime"],
+      techStack: [
+        "Next.js 16",
+        "React 19",
+        "React Compiler",
+        "Tailwind CSS",
+        "Framer Motion",
+        "Edge Runtime",
+      ],
       features: [
         {
           name: "Optimistic Kanban Board",
-          description: "Zero-latency drag-and-drop task reordering using React 19's useOptimistic hook with instant rollback triggers on server-side transaction failures.",
+          description:
+            "Zero-latency drag-and-drop task reordering using React 19's useOptimistic hook with instant rollback triggers on server-side transaction failures.",
           badge: "useOptimistic",
         },
         {
           name: "Concurrent Priority Scheduler",
-          description: "Visualizes CPU main thread scheduling. Defers low-priority rendering via useTransition to keep animations locked at 60fps under heavy filters.",
+          description:
+            "Visualizes CPU main thread scheduling. Defers low-priority rendering via useTransition to keep animations locked at 60fps under heavy filters.",
           badge: "useTransition",
         },
         {
           name: "Streaming checkout Wizard",
-          description: "A 4-step progressive wizard eliminating local useState completely by orchestrating useFormStatus and useActionState server hooks.",
+          description:
+            "A 4-step progressive wizard eliminating local useState completely by orchestrating useFormStatus and useActionState server hooks.",
           badge: "useActionState",
         },
         {
           name: "Hybrid Rendering (PPR) Dashboard",
-          description: "Combines instant static page loading with dynamic streamed React Server Component (RSC) chunks as data promises resolve.",
+          description:
+            "Combines instant static page loading with dynamic streamed React Server Component (RSC) chunks as data promises resolve.",
           badge: "PPR / Streaming",
         },
         {
           name: "Granular Directive Caching",
-          description: "Explores Next.js's experimental \"use cache\" directive to apply granular component-level and fetch-level cache duration profiles.",
+          description:
+            'Explores Next.js\'s experimental "use cache" directive to apply granular component-level and fetch-level cache duration profiles.',
           badge: "use cache",
         },
       ],
@@ -90,9 +108,7 @@ export default function ProjectsCatalog() {
         <h2 className="text-xs font-mono uppercase text-zinc-400 tracking-wider">
           Featured Engineering Projects
         </h2>
-        <span className="text-[10px] font-mono text-zinc-350">
-          Scale: Extensible Framework
-        </span>
+        <span className="text-[10px] font-mono text-zinc-350">Scale: Extensible Framework</span>
       </div>
 
       <div className="space-y-4">
@@ -182,7 +198,7 @@ export default function ProjectsCatalog() {
                         <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block">
                           Experimental Specimens (Live in Lab)
                         </span>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                           {project.features.map((feat, idx) => (
                             <div

@@ -48,7 +48,7 @@ export default function Home() {
       {/* Header Panel */}
       <header className="premium-card rounded-2xl p-6 md:p-8 border border-zinc-200 bg-white flex flex-col md:flex-row md:items-center md:justify-between gap-6 shadow-sm relative overflow-hidden">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50/20 rounded-full blur-3xl -z-10" />
-        
+
         <div className="space-y-2.5">
           <div className="flex items-center space-x-2">
             <span className="h-2 w-2 rounded-full bg-indigo-600 animate-pulse" />
@@ -117,21 +117,26 @@ export default function Home() {
             <h3 className="text-xs font-mono font-bold uppercase text-zinc-400 border-b border-zinc-100 pb-2">
               Technology Foundations
             </h3>
-            
+
             <div className="space-y-3.5">
               <div>
                 <div className="flex justify-between text-[11px] font-mono text-zinc-500 mb-1">
-                  <span className="flex items-center"><Cpu size={10} className="mr-1.5 text-indigo-600" /> Next.js & React Ecosystem</span>
+                  <span className="flex items-center">
+                    <Cpu size={10} className="mr-1.5 text-indigo-600" /> Next.js & React Ecosystem
+                  </span>
                   <span className="text-zinc-850 font-bold">Expert</span>
                 </div>
                 <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden">
                   <div className="h-full bg-indigo-600 rounded-full w-[95%]" />
                 </div>
               </div>
-              
+
               <div>
                 <div className="flex justify-between text-[11px] font-mono text-zinc-500 mb-1">
-                  <span className="flex items-center"><Database size={10} className="mr-1.5 text-teal-650" /> Firebase Realtime Architecture</span>
+                  <span className="flex items-center">
+                    <Database size={10} className="mr-1.5 text-teal-650" /> Firebase Realtime
+                    Architecture
+                  </span>
                   <span className="text-zinc-850 font-bold">Advanced</span>
                 </div>
                 <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden">
@@ -141,7 +146,9 @@ export default function Home() {
 
               <div>
                 <div className="flex justify-between text-[11px] font-mono text-zinc-500 mb-1">
-                  <span className="flex items-center"><Server size={10} className="mr-1.5 text-amber-600" /> Web Security Standards</span>
+                  <span className="flex items-center">
+                    <Server size={10} className="mr-1.5 text-amber-600" /> Web Security Standards
+                  </span>
                   <span className="text-zinc-850 font-bold">Advanced</span>
                 </div>
                 <div className="h-1.5 bg-zinc-100 rounded-full overflow-hidden">

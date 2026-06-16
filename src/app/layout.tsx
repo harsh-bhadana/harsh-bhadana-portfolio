@@ -14,8 +14,17 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Harsh Bhadana | Senior Frontend Engineer & Dashboard Architect",
-  description: "Portfolio of Harsh Bhadana, a Frontend Developer with 4+ years of experience designing and building performant dashboards, real-time bidding systems, and secure web architectures using Next.js, Redux, and Firebase.",
-  keywords: ["Harsh Bhadana", "Frontend Developer", "Next.js Portfolio", "React Engineer", "Dashboard Developer", "Web Security", "Royal Enfield Frontend"],
+  description:
+    "Portfolio of Harsh Bhadana, a Frontend Developer with 4+ years of experience designing and building performant dashboards, real-time bidding systems, and secure web architectures using Next.js, Redux, and Firebase.",
+  keywords: [
+    "Harsh Bhadana",
+    "Frontend Developer",
+    "Next.js Portfolio",
+    "React Engineer",
+    "Dashboard Developer",
+    "Web Security",
+    "Royal Enfield Frontend",
+  ],
   authors: [{ name: "Harsh Bhadana", url: "mailto:harshbhadana40@gmail.com" }],
 };
 

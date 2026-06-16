@@ -31,16 +31,49 @@ export default function ExperienceTimeline() {
       role: "Frontend Developer (Senior Associate – Technology)",
       company: "TCZ Digital Pvt. Ltd. (Royal Enfield Projects)",
       period: "Dec 2021 – Present",
-      description: "Designed and built performance-focused frontend architectures, real-time bidding networks, and secure APIs for Royal Enfield.",
+      description:
+        "Designed and built performance-focused frontend architectures, real-time bidding networks, and secure APIs for Royal Enfield.",
       achievements: [
-        { text: "Architected Royal Enfield internal dashboard from scratch using Next.js App Router, Redux Toolkit, and Firebase, implementing code splitting, lazy loading, and dynamic imports to improve performance.", metric: "Core Web Vitals" },
-        { text: "Designed a secure real-time bidding network for bikes with live synchronization via Firebase, optimizing render cycles with custom React hooks.", metric: "Real-time Sync" },
-        { text: "Hardened payload transmission security by establishing client-server Hash Validation protocols (SHA-256).", metric: "Payload Integrity" },
-        { text: "Mitigated XSS and clickjacking attacks using strict Content Security Policy (CSP) headers.", metric: "Security Hardened" },
-        { text: "Integrated Ride Sure platform shared authentication (OAuth SSO) with advanced error handling and automatic retry logic.", metric: "OAuth & SSO" },
-        { text: "Standardized UI architecture across layouts by publishing reusable component guidelines and custom hooks.", metric: "Code Standardization" },
+        {
+          text: "Architected Royal Enfield internal dashboard from scratch using Next.js App Router, Redux Toolkit, and Firebase, implementing code splitting, lazy loading, and dynamic imports to improve performance.",
+          metric: "Core Web Vitals",
+        },
+        {
+          text: "Designed a secure real-time bidding network for bikes with live synchronization via Firebase, optimizing render cycles with custom React hooks.",
+          metric: "Real-time Sync",
+        },
+        {
+          text: "Hardened payload transmission security by establishing client-server Hash Validation protocols (SHA-256).",
+          metric: "Payload Integrity",
+        },
+        {
+          text: "Mitigated XSS and clickjacking attacks using strict Content Security Policy (CSP) headers.",
+          metric: "Security Hardened",
+        },
+        {
+          text: "Integrated Ride Sure platform shared authentication (OAuth SSO) with advanced error handling and automatic retry logic.",
+          metric: "OAuth & SSO",
+        },
+        {
+          text: "Standardized UI architecture across layouts by publishing reusable component guidelines and custom hooks.",
+          metric: "Code Standardization",
+        },
       ],
-      skills: ["Next.js", "React.js", "Redux Toolkit", "Firebase", "Tailwind CSS", "CSP", "Hash Validation", "Google Analytics", "REST APIs", "OAuth", "Code Splitting", "Lazy Loading", "React Hooks"],
+      skills: [
+        "Next.js",
+        "React.js",
+        "Redux Toolkit",
+        "Firebase",
+        "Tailwind CSS",
+        "CSP",
+        "Hash Validation",
+        "Google Analytics",
+        "REST APIs",
+        "OAuth",
+        "Code Splitting",
+        "Lazy Loading",
+        "React Hooks",
+      ],
     },
     {
       id: "somani",
@@ -48,12 +81,27 @@ export default function ExperienceTimeline() {
       role: "Frontend Engineer (Contract)",
       company: "Somani (Shipment Tracking Dashboard)",
       period: "2021",
-      description: "Developed and optimized dashboard platforms tracking complex shipping routes and cargo metrics.",
+      description:
+        "Developed and optimized dashboard platforms tracking complex shipping routes and cargo metrics.",
       achievements: [
-        { text: "Developed a reusable React + Redux visualization component library to standardize dashboard charts and reduce development friction.", metric: "Visualization Library" },
-        { text: "Engineered responsive data visualization modules using React, Redux, and lightweight SVGs.", metric: "SVG Charts" },
+        {
+          text: "Developed a reusable React + Redux visualization component library to standardize dashboard charts and reduce development friction.",
+          metric: "Visualization Library",
+        },
+        {
+          text: "Engineered responsive data visualization modules using React, Redux, and lightweight SVGs.",
+          metric: "SVG Charts",
+        },
       ],
-      skills: ["React.js", "Redux", "Data Visualization", "API Optimization", "JavaScript (ES6+)", "CSS3", "SVG Layouts"],
+      skills: [
+        "React.js",
+        "Redux",
+        "Data Visualization",
+        "API Optimization",
+        "JavaScript (ES6+)",
+        "CSS3",
+        "SVG Layouts",
+      ],
     },
 
     {
@@ -62,11 +110,18 @@ export default function ExperienceTimeline() {
       role: "Mentorship & Engineering Standards",
       company: "Professional Development & Open Source",
       period: "Ongoing",
-      description: "Mentoring junior developers, driving refactoring initiatives, and advocating for modern development standards.",
+      description:
+        "Mentoring junior developers, driving refactoring initiatives, and advocating for modern development standards.",
       achievements: [
-        { text: "Mentored 3+ junior frontend developers, conducting code reviews and pair programming sessions to elevate code quality." },
-        { text: "Led refactoring sprints to migrate legacy codebases to functional React components and custom React hooks." },
-        { text: "Contributed to internal styling guides, ESLint rules, and component documentation to improve developer onboarding and speed." },
+        {
+          text: "Mentored 3+ junior frontend developers, conducting code reviews and pair programming sessions to elevate code quality.",
+        },
+        {
+          text: "Led refactoring sprints to migrate legacy codebases to functional React components and custom React hooks.",
+        },
+        {
+          text: "Contributed to internal styling guides, ESLint rules, and component documentation to improve developer onboarding and speed.",
+        },
       ],
       skills: ["Mentorship", "Code Review", "Refactoring", "Clean Code", "Git/GitHub"],
     },
@@ -76,9 +131,7 @@ export default function ExperienceTimeline() {
     setExpandedId(expandedId === id ? null : id);
   };
 
-  const allSkills = Array.from(
-    new Set(timelineData.flatMap((item) => item.skills))
-  );
+  const allSkills = Array.from(new Set(timelineData.flatMap((item) => item.skills)));
 
   return (
     <div className="space-y-6">
@@ -113,18 +166,22 @@ export default function ExperienceTimeline() {
             return (
               <div key={item.id} className="relative pl-6 md:pl-8">
                 {/* Node Icon */}
-                <div className={`absolute -left-3.5 top-1.5 w-7 h-7 rounded-full flex items-center justify-center border text-xs transition-colors duration-300 bg-white ${
-                  isExpanded
-                    ? "border-indigo-600 text-indigo-600"
-                    : "border-zinc-200 text-zinc-400"
-                }`}>
+                <div
+                  className={`absolute -left-3.5 top-1.5 w-7 h-7 rounded-full flex items-center justify-center border text-xs transition-colors duration-300 bg-white ${
+                    isExpanded
+                      ? "border-indigo-600 text-indigo-600"
+                      : "border-zinc-200 text-zinc-400"
+                  }`}
+                >
                   {item.type === "work" ? <Briefcase size={12} /> : <GraduationCap size={12} />}
                 </div>
 
                 {/* Timeline Box */}
-                <div className={`premium-card rounded-2xl p-4 bg-white ${
-                  isExpanded ? "border-zinc-350/50" : "border-zinc-200"
-                }`}>
+                <div
+                  className={`premium-card rounded-2xl p-4 bg-white ${
+                    isExpanded ? "border-zinc-350/50" : "border-zinc-200"
+                  }`}
+                >
                   {/* Top Bar Header */}
                   <div
                     onClick={() => handleToggle(item.id)}

@@ -1,0 +1,12 @@
+# build outputs
+.next/
+out/
+build/
+dist/
+
+# dependencies
+node_modules/
+
+# local configurations & files
+.env*.local
+package-lock.json
