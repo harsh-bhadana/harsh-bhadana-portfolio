@@ -50,26 +50,12 @@ export default function ExperienceTimeline() {
       period: "2021",
       description: "Developed and optimized dashboard platforms tracking complex shipping routes and cargo metrics.",
       achievements: [
-        { text: "Developed shipment tracking dashboards highlighting real-time transit telemetry and interactive maps.", metric: "Interactive Maps" },
         { text: "Developed a reusable React + Redux visualization component library to standardize dashboard charts and reduce development friction.", metric: "Visualization Library" },
         { text: "Engineered responsive data visualization modules using React, Redux, and lightweight SVGs.", metric: "SVG Charts" },
-        { text: "Collaborated with backend services to tune API payloads, reducing endpoint response overhead.", metric: "35% Latency Reduction" },
       ],
       skills: ["React.js", "Redux", "Data Visualization", "API Optimization", "JavaScript (ES6+)", "CSS3", "SVG Layouts"],
     },
-    {
-      id: "education",
-      type: "education",
-      role: "Bachelor of Commerce (B.Com)",
-      company: "Dyal Singh College, University of Delhi",
-      period: "2018 – 2021",
-      description: "Academic foundation in finance, trade systems, and business analytics, supplemented by self-directed software engineering study.",
-      achievements: [
-        { text: "Graduated with B.Com degree.", metric: "Graduated 2021" },
-        { text: "Self-Taught Developer: Mastered modern JS/TS, React ecosystem, and browser rendering engines through independent study and projects.", metric: "Self-Directed Study" },
-      ],
-      skills: ["Analytics", "Business Systems", "TypeScript", "JavaScript", "Self-Directed Learning"],
-    },
+
     {
       id: "professional-development",
       type: "work",

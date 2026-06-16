@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Server, Cpu, Database } from "lucide-react";
 
 import ProfileSummary from "@/components/ProfileSummary";
 import GithubPulse from "@/components/GithubPulse";
+import ProjectsCatalog from "@/components/ProjectsCatalog";
 import InteractiveSimulators from "@/components/InteractiveSimulators";
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 
@@ -159,6 +160,11 @@ export default function Home() {
               Work History Timeline
             </h2>
             <ExperienceTimeline />
+          </div>
+
+          {/* Featured Projects & Labs Catalog */}
+          <div className="pt-4 border-t border-zinc-100">
+            <ProjectsCatalog />
           </div>
 
           {/* Interactive Simulators */}
