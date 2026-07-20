@@ -150,6 +150,54 @@ export default function ProjectsCatalog() {
       launchLabel: "Launch Gallery",
       featuresLabel: "Key Showcase Features",
     },
+    {
+      id: "whatnow",
+      title: "WhatNow — Content Recommendation",
+      description:
+        "A personalized content recommendation platform that helps users discover new movies, TV shows, and anime tailored to their precise moods utilizing AI-driven generation and a unified watch history.",
+      status: "Beta",
+      deployUrl: "https://whatnow-swart.vercel.app/",
+      githubUrl: "https://github.com/harsh-bhadana/whatnow",
+      techStack: [
+        "Next.js 16",
+        "React 19",
+        "Gemini SDK",
+        "Tailwind CSS v4",
+        "Framer Motion",
+        "MongoDB",
+        "NextAuth",
+        "Zustand",
+      ],
+      features: [
+        {
+          name: "AI-Driven Recommendations",
+          description:
+            "Uses the Gemini 2.0 Flash model to generate hyper-personalized media recommendations based on watch history and current vibe.",
+          badge: "Gemini 2.0",
+        },
+        {
+          name: "Server-Rendered Performance",
+          description:
+            "Key pages like History and Watchlist use Next.js Server Components for instant loading and zero layout shift.",
+          badge: "RSC",
+        },
+        {
+          name: "Unified Experience",
+          description:
+            "Seamless single-user architecture where all watch history and watchlists are securely synced with NextAuth and MongoDB.",
+          badge: "Auth & DB",
+        },
+        {
+          name: "Modern Interface",
+          description:
+            "A sleek, animated experience providing an immersive UI utilizing Tailwind CSS v4 and Framer Motion.",
+          badge: "Framer Motion",
+        },
+      ],
+      iconType: "beaker",
+      launchLabel: "Launch App",
+      featuresLabel: "Platform Features",
+    },
   ];
 
   const handleToggleExpand = (id: string) => {
