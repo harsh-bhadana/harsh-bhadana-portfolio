@@ -197,7 +197,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="pt-8 border-t border-zinc-200 text-center text-[10px] font-mono text-zinc-400">
-        <p>© 2026 Harsh Bhadana. Crafted using Next.js 16 (Partial Prerendering) & Tailwind v4.</p>
+        <p>© 2026 Harsh Bhadana. Works on my machine™ (Built with Next.js 16 & Tailwind v4)</p>
       </footer>
     </main>
   );
