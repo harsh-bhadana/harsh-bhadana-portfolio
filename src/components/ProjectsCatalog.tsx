@@ -161,7 +161,7 @@ export default function ProjectsCatalog() {
       techStack: [
         "Next.js 16",
         "React 19",
-        "Gemini SDK (WIP)",
+        "Gemini 2.0 SDK",
         "Tailwind CSS v4",
         "Framer Motion",
         "MongoDB",
@@ -170,10 +170,10 @@ export default function ProjectsCatalog() {
       ],
       features: [
         {
-          name: "AI-Driven Recommendations (WIP)",
+          name: "Hybrid AI Pipeline",
           description:
-            "Work in progress: Integration of the Gemini 2.0 Flash model to generate hyper-personalized media recommendations based on watch history and current vibe.",
-          badge: "WIP / Gemini 2.0",
+            "A highly optimized 2-step AI pipeline combining deterministic TMDB data fetching with Gemini 2.0 Flash reasoning for hyper-personalized recommendations.",
+          badge: "Gemini 2.0 / TMDB",
         },
         {
           name: "Server-Rendered Performance",
