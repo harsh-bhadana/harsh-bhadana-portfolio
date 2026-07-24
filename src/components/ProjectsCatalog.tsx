@@ -154,44 +154,44 @@ export default function ProjectsCatalog() {
       id: "whatnow",
       title: "WhatNow — Content Recommendation",
       description:
-        "A personalized content recommendation platform that helps users discover new movies, TV shows, and anime tailored to their precise moods utilizing AI-driven generation and a unified watch history.",
+        "An incredibly fast, highly personalized content recommendation platform. Features a frictionless Tinder-style Swipe Tuner and a hybrid AI pipeline with collaborative filtering to precisely calibrate your taste profile.",
       status: "Beta",
       deployUrl: "https://whatnow-swart.vercel.app/",
       githubUrl: "https://github.com/harsh-bhadana/whatnow",
       techStack: [
         "Next.js 16",
         "React 19",
-        "Gemini 2.0 SDK",
+        "Gemini 2.0 Flash",
         "Tailwind CSS v4",
         "Framer Motion",
-        "MongoDB",
-        "NextAuth",
+        "MongoDB Aggregation",
+        "NextAuth v5",
         "Zustand",
       ],
       features: [
         {
-          name: "Hybrid AI Pipeline",
+          name: "Tinder-Style Swipe Tuner",
           description:
-            "A highly optimized 2-step AI pipeline combining deterministic TMDB data fetching with Gemini 2.0 Flash reasoning for hyper-personalized recommendations.",
-          badge: "Gemini 2.0 / TMDB",
+            "A frictionless, mobile-first preference tuner. Swipe media cards right or left to instantly calibrate the AI's understanding of your taste profile.",
+          badge: "Framer Motion / Zustand",
         },
         {
-          name: "Server-Rendered Performance",
+          name: "Collaborative AI Filtering",
           description:
-            "Key pages like History and Watchlist use Next.js Server Components for instant loading and zero layout shift.",
-          badge: "RSC",
+            "Analyzes your entire watch history and matches you with other users who share your specific taste profile via a robust MongoDB aggregation pipeline.",
+          badge: "MongoDB Aggregation",
         },
         {
-          name: "Unified Experience",
+          name: "Automated Benchmark Curation",
           description:
-            "Seamless single-user architecture where all watch history and watchlists are securely synced with NextAuth and MongoDB.",
-          badge: "Auth & DB",
+            "A background Vercel Cron job queries Gemini AI weekly for a fresh, highly polarizing set of benchmark movies to ensure high-quality signal data.",
+          badge: "Vercel Cron",
         },
         {
-          name: "Modern Interface",
+          name: "Dynamic OTT Badging & Insights",
           description:
-            "A sleek, animated experience providing an immersive UI utilizing Tailwind CSS v4 and Framer Motion.",
-          badge: "Framer Motion",
+            "Every recommendation includes AI-generated personalized justifications, and is instantly badged with streaming availability powered by JustWatch integration.",
+          badge: "Gemini / JustWatch",
         },
       ],
       iconType: "beaker",
